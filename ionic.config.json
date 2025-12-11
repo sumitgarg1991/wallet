@@ -1,7 +1,8 @@
 {
   "name": "qwik2pay",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular-standalone"
 }

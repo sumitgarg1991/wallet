@@ -2,10 +2,6 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
-};
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
@@ -14,3 +10,16 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+
+
+export const environment = {
+  production: false,
+  apiUrl: 'https://api.qwik2pay.com',   // backend base URL
+  auth: {
+    issuer: 'https://auth.qwik2pay.com',  // your auth provider (Auth0/Keycloak)
+    clientId: 'qwik2pay-mobile',
+    redirectUri: 'com.qwik2pay.app://callback',
+    scope: 'openid profile email offline_access'
+  }
+};
+
