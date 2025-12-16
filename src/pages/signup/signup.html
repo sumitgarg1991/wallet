@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>Sign Up</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+
+
+    <ion-item>
+        <ion-input label="First Name" labelPlacement="floating" [(ngModel)]="user.firstName"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+        <ion-input label="Last Name" labelPlacement="floating" [(ngModel)]="user.lastName"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+        <ion-input label="Email" type="email" labelPlacement="floating" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+        <ion-input label="Phone" labelPlacement="floating" [(ngModel)]="user.phoneNumber"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+        <ion-input label="Password" type="password" labelPlacement="floating"
+            [(ngModel)]="user.passwordHash"></ion-input>
+    </ion-item>
+
+
+    <ion-button expand="block" class="ion-margin-top" (click)="register()">
+        Register
+    </ion-button>
+
+
+</ion-content>
