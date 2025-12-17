@@ -5,7 +5,7 @@ import { ToastController } from '@ionic/angular';
 
 @Component({
     selector: 'app-signup',
-    templateUrl: './signup.page.html'
+    templateUrl: './signup.html'
 })
 export class SignupPage {
 

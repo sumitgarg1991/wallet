@@ -1,12 +1,15 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicModule } from '@ionic/angular'; // <-- make sure this is imported
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { routes } from './app.routes';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { RouteReuseStrategy } from '@angular/router';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @NgModule({
     declarations: [AppComponent],
@@ -14,13 +17,18 @@ import { HttpClientModule } from '@angular/common/http';
     imports: [
         environment,
         BrowserModule,
-        IonicModule,
+        IonicModule.forRoot(),
         CommonModule,
         FormsModule,
-        BrowserModule,
         HttpClientModule,
         routes
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+
+  providers: [
+    StatusBar,
+    SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ]
 })
 export class AppModule { }
