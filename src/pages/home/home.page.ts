@@ -4,13 +4,15 @@ import { environment } from '../../environments/environment';
 import { AuthService } from '../../service/auth.service';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'home-page',
+  selector: 'app-home',
+  templateUrl: './home.page.html',
   standalone: true,
-  imports: [IonicModule, CommonModule],
-  templateUrl: './home.page.html'
+  imports: [IonicModule, CommonModule, FormsModule]
 })
+
 export class HomePage implements OnInit {
   customer: any = null;
 

@@ -1,42 +1,23 @@
-<ion-header>
-    <ion-toolbar color="primary">
-        <ion-title>Sign Up</ion-title>
-    </ion-toolbar>
-</ion-header>
-
-
 <ion-content class="ion-padding">
-
-
-    <ion-item>
-        <ion-input label="First Name" labelPlacement="floating" [(ngModel)]="user.firstName"></ion-input>
-    </ion-item>
-
-
-    <ion-item>
-        <ion-input label="Last Name" labelPlacement="floating" [(ngModel)]="user.lastName"></ion-input>
-    </ion-item>
-
-
-    <ion-item>
-        <ion-input label="Email" type="email" labelPlacement="floating" [(ngModel)]="user.email"></ion-input>
-    </ion-item>
-
-
-    <ion-item>
-        <ion-input label="Phone" labelPlacement="floating" [(ngModel)]="user.phoneNumber"></ion-input>
-    </ion-item>
-
-
-    <ion-item>
-        <ion-input label="Password" type="password" labelPlacement="floating"
-            [(ngModel)]="user.passwordHash"></ion-input>
-    </ion-item>
-
-
-    <ion-button expand="block" class="ion-margin-top" (click)="register()">
-        Register
-    </ion-button>
-
-
+    <ion-img src="assets/logo/qwik2pay-logo.png" class="app-logo"></ion-img>
+    <form [formGroup]="form" (ngSubmit)="register()">
+        <ion-item>
+            <ion-input label="Email" type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input label="Mobile Number" type="tel" formControlName="mobile"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input label="Password" type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-button expand="block" (click)="sendOtp()" [disabled]="otpSent">
+            Send Verification Code
+        </ion-button>
+        <ion-item *ngIf="otpSent">
+            <ion-input label="OTP" formControlName="otp"></ion-input>
+        </ion-item>
+        <ion-button expand="block" type="submit" [disabled]="!otpVerified">
+            Create Account
+        </ion-button>
+    </form>
 </ion-content>

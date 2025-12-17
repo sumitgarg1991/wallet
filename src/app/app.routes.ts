@@ -8,17 +8,17 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () =>
-      import('../pages/login/login.module').then(m => m.LoginPageModule)
+    loadComponent: () =>
+      import('../pages/login/login.page').then(m => m.LoginPage)
   },
   {
     path: 'signup',
-    loadChildren: () =>
-      import('../pages/signup/signup.module').then(m => m.SignupPageModule)
+    loadComponent: () =>
+      import('../pages/signup/signup.page').then(m => m.SignupPage)
   },
   {
     path: 'home',
-    loadChildren: () =>
-      import('../pages/home/home.module').then(m => m.HomePageModule)
+    loadComponent: () =>
+      import('../pages/home/home.page').then(m => m.HomePage)
   }
 ];

@@ -82,4 +82,13 @@ export class AuthService {
     login(credentials: any): Observable<any> {
         return this.http.post(`${this.baseUrl}/login`, credentials);
     }
+
+    sendOtp(data: any) {
+        return this.http.post(`${this.baseUrl}/send-otp`, data);
+    }
+
+
+    verifyOtpAndSignup(data: any) {
+        return this.http.post(`${this.baseUrl}/verify-otp`, data);
+    }
 }
