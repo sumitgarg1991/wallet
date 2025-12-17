@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 
-
 export const routes: Routes = [
   {
     path: '',
@@ -9,17 +8,17 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () =>
-      import('../pages/login/login.page').then(m => m.LoginPage)
+    loadChildren: () =>
+      import('../pages/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'signup',
-    loadComponent: () =>
-      import('../pages/signup/signup.page').then(m => m.SignupPage)
+    loadChildren: () =>
+      import('../pages/signup/signup.module').then(m => m.SignupPageModule)
   },
   {
     path: 'home',
-    loadComponent: () =>
-      import('../pages/home/home.page').then(m => m.HomePage)
+    loadChildren: () =>
+      import('../pages/home/home.module').then(m => m.HomePageModule)
   }
 ];
