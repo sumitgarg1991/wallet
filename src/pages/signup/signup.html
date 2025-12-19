@@ -1,23 +1,47 @@
-<ion-content class="ion-padding">
-    <ion-img src="assets/logo/qwik2pay-logo.png" class="app-logo"></ion-img>
-    <form [formGroup]="form" (ngSubmit)="register()">
-        <ion-item>
-            <ion-input label="Email" type="email" formControlName="email"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-input label="Mobile Number" type="tel" formControlName="mobile"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-input label="Password" type="password" formControlName="password"></ion-input>
-        </ion-item>
-        <ion-button expand="block" (click)="sendOtp()" [disabled]="otpSent">
-            Send Verification Code
-        </ion-button>
-        <ion-item *ngIf="otpSent">
-            <ion-input label="OTP" formControlName="otp"></ion-input>
-        </ion-item>
-        <ion-button expand="block" type="submit" [disabled]="!otpVerified">
-            Create Account
-        </ion-button>
-    </form>
+<ion-content class="auth-bg">
+
+    <div class="auth-wrapper">
+
+        <ion-img src="assets/logo/qwik2pay.png" class="app-logo"></ion-img>
+
+        <div class="auth-card">
+
+            <h2 class="auth-title">Create Account</h2>
+
+            <form [formGroup]="form" (ngSubmit)="register()">
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <ion-input type="email" formControlName="email" placeholder="Enter your email"></ion-input>
+                </div>
+
+                <div class="input-group">
+                    <label>Mobile Number</label>
+                    <ion-input type="tel" formControlName="mobile" placeholder="Enter mobile number"></ion-input>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <ion-input type="password" formControlName="password" placeholder="Create password"></ion-input>
+                </div>
+
+                <ion-button expand="block" shape="round" (click)="sendOtp()" [disabled]="otpSent" class="primary-btn">
+                    SEND VERIFICATION CODE
+                </ion-button>
+
+                <ion-button expand="block" shape="round" type="submit" [disabled]="!otpVerified" class="secondary-btn">
+                    CREATE ACCOUNT
+                </ion-button>
+
+            </form>
+
+            <div class="auth-footer">
+                Already have an account?
+                <span routerLink="/login">LOGIN</span>
+            </div>
+
+        </div>
+
+    </div>
+
 </ion-content>

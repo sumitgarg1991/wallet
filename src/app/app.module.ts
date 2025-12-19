@@ -12,11 +12,14 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HomePage } from 'src/pages/home/home.page';
 import { LoginPage } from 'src/pages/login/login.page';
 import { SignupPage } from 'src/pages/signup/signup.page';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [AppComponent, SignupPage, LoginPage, HomePage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     IonicModule.forRoot(),
     CommonModule,
@@ -31,4 +34,4 @@ import { SignupPage } from 'src/pages/signup/signup.page';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ]
 })
-export class AppModule {}
+export class AppModule { }

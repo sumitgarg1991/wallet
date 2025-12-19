@@ -3,26 +3,36 @@ import { AuthService } from '../../service/auth.service';
 import { ToastController } from '@ionic/angular';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.html',
-  imports: [IonicModule, CommonModule, FormsModule]
+  styleUrls: ['./login.page.scss'],
+  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule, RouterModule]
 })
 export class LoginPage {
-
+  form: FormGroup;
 
   email = '';
   password = '';
 
 
   constructor(
+    private fb: FormBuilder,
     private authService: AuthService,
     private toastCtrl: ToastController
-  ) { }
+  ) {
+    this.form = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
 
 
   login() {

@@ -35,3 +35,63 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+
+.app-logo {
+    width: 120px;
+    margin: 30px auto 20px;
+    display: block;
+}
+
+.auth-card {
+    max-width: 420px;
+    margin: auto;
+    padding: 24px;
+    border-radius: 16px;
+    background: #ffffff;
+}
+
+.auth-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+// :root {
+//     --qwik-gradient: linear-gradient(135deg, #36d1dc, #c471ed, #f64f59);
+// }
+
+// .gradient-btn {
+//     background: var(--qwik-gradient);
+//     color: #fff;
+//     font-weight: 600;
+//     letter-spacing: 0.5px;
+//     border-radius: 30px;
+// }
+
+// .gradient-btn:hover {
+//     filter: brightness(1.1);
+// }
+
+@media (prefers-color-scheme: dark) {
+    body {
+        --ion-background-color: #121212;
+        --ion-text-color: #ffffff;
+    }
+
+    .auth-card {
+        background: #1e1e1e;
+    }
+}
+
+.input-error {
+    border-color: #ff4d4f !important;
+}
+

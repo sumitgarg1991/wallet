@@ -1,17 +1,40 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="auth-bg">
 
-<ion-content class="ion-padding">
-  <ion-item>
-    <ion-input label="Email" type="email" labelPlacement="floating" [(ngModel)]="email"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Password" type="password" labelPlacement="floating" [(ngModel)]="password"></ion-input>
-  </ion-item>
-  <ion-button expand="block" class="ion-margin-top" (click)="login()">
-    Login
-  </ion-button>
+  <div class="auth-wrapper">
+
+    <ion-img src="assets/logo/qwik2pay.png" class="app-logo"></ion-img>
+
+    <div class="auth-card">
+
+      <h2 class="auth-title">Login</h2>
+
+      <form [formGroup]="form" (ngSubmit)="login()">
+
+        <div class="input-group">
+          <label>Email</label>
+          <ion-input type="email" formControlName="email" placeholder="Type your email">
+          </ion-input>
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <ion-input type="password" formControlName="password" placeholder="Type your password">
+          </ion-input>
+        </div>
+
+        <ion-button expand="block" shape="round" type="submit" class="primary-btn">
+          LOGIN
+        </ion-button>
+
+      </form>
+
+      <div class="auth-footer">
+        Don’t have an account?
+        <span routerLink="/signup">SIGN UP</span>
+      </div>
+
+    </div>
+
+  </div>
+
 </ion-content>

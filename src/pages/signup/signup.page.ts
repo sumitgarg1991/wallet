@@ -5,13 +5,15 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
     standalone: true,
     selector: 'app-signup',
-    imports: [IonicModule, CommonModule, ReactiveFormsModule, FormsModule],
-    templateUrl: './signup.page.html'
+    styleUrls: ['./signup.page.scss'],
+    imports: [IonicModule, CommonModule, ReactiveFormsModule, FormsModule, RouterModule],
+    templateUrl: './signup.html'
 })
 export class SignupPage {
 
