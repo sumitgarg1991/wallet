@@ -1,10 +1,10 @@
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import { AuthService } from '../../service/auth.service';
-import { IonicModule } from '@ionic/angular';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',

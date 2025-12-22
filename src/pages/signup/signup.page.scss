@@ -1,9 +1,156 @@
 @import '../login/login.page.scss';
 
-// .secondary-btn {
-//   margin-top: 12px;
-//   height: 48px;
-//   background: #cfd8ff;
-//   color: #0a58ff;
-//   font-weight: 600;
-// }
+.auth-bg {
+    --background: linear-gradient(135deg, #eef2ff, #fdfcff);
+}
+
+.auth-wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+.app-logo {
+    width: 90px;
+    margin-bottom: 24px;
+}
+
+.auth-card {
+    width: 90%;
+    max-width: 400px;
+    padding: 28px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.auth-title {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.input-group {
+    margin-bottom: 18px;
+
+    label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #555;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    ion-input {
+        --padding-start: 14px;
+        --padding-end: 14px;
+        --background: #f6f7fb;
+        border-radius: 12px;
+        border: 1px solid #eef0f6;
+    }
+}
+
+.primary-btn {
+    --background: linear-gradient(135deg, #5a78ff, #0a58ff);
+    --border-radius: 999px;
+    --box-shadow: 0 10px 20px rgba(10, 88, 255, 0.25);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+}
+
+.secondary-btn {
+    --background: linear-gradient(135deg, #00c853, #009624);
+    --border-radius: 999px;
+    --box-shadow: 0 10px 20px rgba(0, 200, 83, 0.25);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-top: 12px;
+}
+
+.divider {
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    span {
+        font-size: 12px;
+        color: #666;
+        padding: 0 12px;
+    }
+
+    &::before,
+    &::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #e9ecf4;
+    }
+}
+
+.social-login {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 8px;
+
+    .social-btn {
+        --padding-start: 8px;
+        --padding-end: 8px;
+        --ripple-color: transparent;
+
+        &.google {
+            color: #db4437;
+        }
+
+        &.facebook {
+            color: #1877f2;
+        }
+
+        ion-icon {
+            font-size: 22px;
+        }
+    }
+}
+
+.auth-footer {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+
+    span {
+        color: #0a58ff;
+        font-weight: 600;
+        cursor: pointer;
+    }
+}
+
+.phone-input {
+    display: flex;
+    gap: 8px;
+
+    ion-select {
+        flex: 0 0 120px;
+        --background: #f6f7fb;
+        border-radius: 12px;
+    }
+
+    ion-input {
+        flex: 1;
+        --background: #f6f7fb;
+        border-radius: 12px;
+    }
+}
+
+.error {
+    font-size: 12px;
+    color: #d32f2f;
+    margin-top: 4px;
+}

@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { UserManager, WebStorageStateStore } from 'oidc-client-ts';
-import { OAuthService, AuthConfig } from 'angular-oauth2-oidc';
-import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
+import { UserManager, WebStorageStateStore } from 'oidc-client-ts';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 const authConfig: AuthConfig = {
     issuer: environment.auth.issuer,
@@ -43,11 +42,6 @@ export class AuthService {
         // Use PKCE (default for responseType 'code')
     }
 
-    // async login() {
-    //     await this.userManager.signinRedirect();
-    // }
-
-
     async handleCallback() {
         const user = await this.userManager.signinRedirectCallback();
         this.user$.next(user);
@@ -74,21 +68,61 @@ export class AuthService {
     private baseUrl = 'http://localhost:8080/api/auth';
 
 
-    signup(user: any): Observable<any> {
-        return this.http.post(`${this.baseUrl}/signup`, user);
+    // signup(user: any): Observable<any> {
+    //     return this.http.post(`${this.baseUrl}/signup`, user);
+    // }
+
+
+    // login(credentials: any): Observable<any> {
+    //     return this.http.post(`${this.baseUrl}/login`, credentials);
+    // }
+
+    socialLogin(token: string) {
+        return this.http.post('/api/auth/social-login', { idToken: token });
     }
 
+    // sendOtp(data: any) {
+    //     return this.http.post(`${this.baseUrl}/send-otp`, data);
+    // }
 
-    login(credentials: any): Observable<any> {
-        return this.http.post(`${this.baseUrl}/login`, credentials);
+
+    // verifyOtpAndSignup(data: any) {
+    //     return this.http.post(`${this.baseUrl}/verify-otp`, data);
+    // }
+
+    async loginWithGoogle(): Promise<void> {
+        const authResult = await (window as any).GoogleAuth.signIn(); // Use Capacitor Google Auth plugin
+        await this.exchangeSocialToken('google', authResult.authentication.idToken);
     }
 
-    sendOtp(data: any) {
-        return this.http.post(`${this.baseUrl}/send-otp`, data);
+    async loginWithFacebook(): Promise<void> {
+        const fbLogin = await (window as any).FacebookLogin.login({ permissions: ['email'] });
+        const accessToken = fbLogin?.accessToken?.token;
+        await this.exchangeSocialToken('facebook', accessToken);
     }
 
-
-    verifyOtpAndSignup(data: any) {
-        return this.http.post(`${this.baseUrl}/verify-otp`, data);
+    async exchangeSocialToken(provider: 'google' | 'facebook', token: string): Promise<void> {
+        // Send to backend for verification and wallet token issuance
+        await this.http.post('/api/auth/social/exchange', { provider, token }).toPromise();
     }
+
+// private baseUrl = `${environment.apiBaseUrl}/auth`;
+
+signup(user: any) {
+  return this.http.post(`${this.baseUrl}/signup`, user, { withCredentials: true });
+}
+
+login(credentials: any) {
+  return this.http.post(`${this.baseUrl}/login`, credentials, { withCredentials: true });
+}
+
+sendOtp(data: any) {
+  return this.http.post(`${this.baseUrl}/send-otp`, data, { withCredentials: true });
+}
+
+verifyOtpAndSignup(data: any) {
+  return this.http.post(`${this.baseUrl}/verify-otp`, data, { withCredentials: true });
+}
+
+
 }
